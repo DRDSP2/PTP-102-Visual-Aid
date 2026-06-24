@@ -21,7 +21,3 @@ Equine laminitis visual aid tool with X-ray upload, severity grading, and refere
 - Supabase (Auth, Database, Storage)
 - Deployed on [hosting platform]
 
-## Admin Login
-
-- Email: drdsp@pm.me
-- Password: 123456
