@@ -88,6 +88,12 @@ body {
     font-size: 14px;
 }
 
+.hint {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-top: 16px;
+}
+
 /* Top Bar */
 .top-bar {
     display: flex;

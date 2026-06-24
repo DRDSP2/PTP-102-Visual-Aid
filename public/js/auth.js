@@ -1,4 +1,4 @@
-import { supabase } from './supabase-client.js'
+import { supabase, setSupabaseCredentials, hasCredentials } from './supabase-client.js'
 
 export async function login(email, password) {
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -20,10 +20,22 @@ export async function getSession() {
 }
 
 export function initAuth() {
-    const loginForm = document.getElementById('login-form')
-    const loginError = document.getElementById('login-error')
+    const configScreen = document.getElementById('config-screen')
     const loginScreen = document.getElementById('login-screen')
     const appScreen = document.getElementById('app-screen')
+    
+    // Check if credentials are set
+    if (!hasCredentials()) {
+        configScreen.classList.add('active')
+        initConfigForm()
+        return
+    }
+    
+    configScreen.classList.remove('active')
+    loginScreen.classList.add('active')
+    
+    const loginForm = document.getElementById('login-form')
+    const loginError = document.getElementById('login-error')
     const logoutBtn = document.getElementById('logout-btn')
 
     loginForm.addEventListener('submit', async (e) => {
@@ -49,5 +61,15 @@ export function initAuth() {
             appScreen.classList.add('active')
             window.dispatchEvent(new Event('auth-success'))
         }
+    })
+}
+
+function initConfigForm() {
+    const configForm = document.getElementById('config-form')
+    configForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const url = document.getElementById('config-url').value
+        const key = document.getElementById('config-key').value
+        setSupabaseCredentials(url, key)
     })
 }

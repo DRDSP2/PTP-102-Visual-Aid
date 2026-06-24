@@ -8,8 +8,22 @@
 </head>
 <body>
     <div id="app">
+        <!-- Config Screen (shown if no Supabase credentials) -->
+        <div id="config-screen" class="screen active">
+            <div class="login-box">
+                <h1>PTP-102 Visual Aid</h1>
+                <p>Supabase Configuration Required</p>
+                <form id="config-form">
+                    <input type="url" id="config-url" placeholder="Supabase URL (e.g., https://xxxx.supabase.co)" required>
+                    <input type="text" id="config-key" placeholder="Supabase Anon Key" required>
+                    <button type="submit">Save & Continue</button>
+                </form>
+                <p class="hint">Find these in your Supabase Dashboard > Project Settings > API</p>
+            </div>
+        </div>
+
         <!-- Login Screen -->
-        <div id="login-screen" class="screen active">
+        <div id="login-screen" class="screen">
             <div class="login-box">
                 <h1>PTP-102 Visual Aid</h1>
                 <p>Equine Laminitis Assessment Tool</p>
