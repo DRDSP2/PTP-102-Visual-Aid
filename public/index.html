@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTP-102 Visual Aid</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="login-screen" class="screen active">
+            <div class="login-box">
+                <h1>PTP-102 Visual Aid</h1>
+                <p>Equine Laminitis Assessment Tool</p>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="Email" value="drdsp@pm.me" required>
+                    <input type="password" id="login-password" placeholder="Password" value="123456" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p id="login-error" class="error"></p>
+            </div>
+        </div>
+
+        <!-- Main App Screen -->
+        <div id="app-screen" class="screen">
+            <header class="top-bar">
+                <div class="horse-selector">
+                    <select id="horse-dropdown">
+                        <option value="">Select Horse...</option>
+                    </select>
+                </div>
+                <div class="severity-selector">
+                    <button class="severity-btn active" data-severity="normal">Normal</button>
+                    <button class="severity-btn" data-severity="mild">Mild</button>
+                    <button class="severity-btn" data-severity="moderate">Moderate</button>
+                    <button class="severity-btn" data-severity="severe">Severe</button>
+                </div>
+                <button id="logout-btn">Logout</button>
+            </header>
+
+            <main class="main-content">
+                <!-- Left Panel: Reference X-ray -->
+                <div class="panel reference-panel">
+                    <h2>Reference X-ray</h2>
+                    <div class="image-viewer">
+                        <img id="reference-image" src="images/reference-xray.jpg" alt="Reference X-ray">
+                        <svg id="reference-overlay" class="overlay"></svg>
+                        <div id="pins-container"></div>
+                    </div>
+                    <div class="pin-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="rotation">Rotation</button>
+                        <button class="filter-btn" data-filter="sinking">Sinking</button>
+                        <button class="filter-btn" data-filter="chronic">Chronic</button>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Patient X-ray -->
+                <div class="panel patient-panel">
+                    <h2>Patient X-ray</h2>
+                    <div class="hoof-selector">
+                        <button class="hoof-btn active" data-hoof="FL">FL</button>
+                        <button class="hoof-btn" data-hoof="FR">FR</button>
+                        <button class="hoof-btn" data-hoof="HL">HL</button>
+                        <button class="hoof-btn" data-hoof="HR">HR</button>
+                    </div>
+                    <div class="image-viewer">
+                        <img id="patient-image" src="" alt="Patient X-ray">
+                        <div id="upload-zone" class="upload-zone">
+                            <p>Drag & drop X-ray here or click to browse</p>
+                            <input type="file" id="file-input" accept="image/*,.dcm,.dicom" hidden>
+                        </div>
+                    </div>
+                    <div class="date-nav">
+                        <button id="prev-date">←</button>
+                        <div id="date-timeline"></div>
+                        <button id="next-date">→</button>
+                    </div>
+                    <div class="image-controls">
+                        <button id="zoom-in">+</button>
+                        <button id="zoom-out">-</button>
+                        <button id="brightness-up">☀</button>
+                        <button id="brightness-down">☾</button>
+                        <button id="reset-view">Reset</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script type="module" src="js/supabase-client.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/visual-aid.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

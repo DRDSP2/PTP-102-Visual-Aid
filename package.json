@@ -1,0 +1,17 @@
+{
+  "name": "ptp-102-visual-aid",
+  "version": "1.0.0",
+  "description": "Equine laminitis visual aid tool with X-ray upload, severity grading, and reference comparison",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "npx serve public",
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'No tests yet'"
+  },
+  "keywords": ["equine", "laminitis", "x-ray", "veterinary", "ptp-102"],
+  "author": "Byrock Technologies",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}
